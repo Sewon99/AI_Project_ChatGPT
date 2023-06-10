@@ -1,8 +1,6 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 
-import 'text_widget.dart';
-
 class ChatWidget extends StatelessWidget {
   const ChatWidget(
       {super.key,
@@ -17,6 +15,9 @@ class ChatWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
+        const SizedBox(
+          height: 10,
+        ),
         Row(
           mainAxisAlignment:
               chatIndex == 0 ? MainAxisAlignment.end : MainAxisAlignment.start,
@@ -28,21 +29,29 @@ class ChatWidget extends StatelessWidget {
               ),
               child: Container(
                 decoration: BoxDecoration(
-                  color: Theme.of(context).colorScheme.primary,
+                  color: chatIndex == 0
+                      ? Theme.of(context).colorScheme.primary
+                      : const Color(0xFFECECEC),
                   borderRadius: const BorderRadius.all(Radius.circular(15)),
                 ),
                 padding:
                     const EdgeInsets.symmetric(vertical: 10, horizontal: 16),
                 margin: const EdgeInsets.symmetric(vertical: 4, horizontal: 15),
                 child: chatIndex == 0
-                    ? TextWidget(
-                        label: msg,
+                    ? Text(
+                        msg,
+                        // textAlign: TextAlign.justify,
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 16,
+                          fontWeight: FontWeight.w500,
+                        ),
                       )
                     : shouldAnimate
                         ? DefaultTextStyle(
                             style: const TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.w700,
+                                color: Colors.black,
+                                fontWeight: FontWeight.w500,
                                 fontSize: 16),
                             child: AnimatedTextKit(
                                 isRepeatingAnimation: false,
@@ -58,8 +67,8 @@ class ChatWidget extends StatelessWidget {
                         : Text(
                             msg.trim(),
                             style: const TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.w700,
+                                color: Colors.black,
+                                fontWeight: FontWeight.w500,
                                 fontSize: 16),
                           ),
               ),
