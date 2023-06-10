@@ -53,13 +53,14 @@ class _ChatScreenState extends State<ChatScreen> {
           padding: const EdgeInsets.all(8.0),
           child: Image.asset(AssetsManager.openaiLogo),
         ),
-        title: const Text("ChatGPT"),
+        title: const Text("DISKO GPT"),
+        centerTitle: true,
         actions: [
           IconButton(
             onPressed: () async {
               await Services.showModalSheet(context: context);
             },
-            icon: const Icon(Icons.more_vert_rounded, color: Colors.white),
+            icon: Icon(Icons.more_vert_rounded, color: Theme.of(context).colorScheme.primary),
           ),
         ],
       ),
@@ -91,7 +92,6 @@ class _ChatScreenState extends State<ChatScreen> {
               height: 15,
             ),
             Material(
-              color: cardColor,
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Row(
@@ -99,7 +99,7 @@ class _ChatScreenState extends State<ChatScreen> {
                     Expanded(
                       child: TextField(
                         focusNode: focusNode,
-                        style: const TextStyle(color: Colors.white),
+                        style: const TextStyle(color: Colors.black),
                         controller: textEditingController,
                         onSubmitted: (value) async {
                           await sendMessageFCT(
@@ -117,9 +117,9 @@ class _ChatScreenState extends State<ChatScreen> {
                               modelsProvider: modelsProvider,
                               chatProvider: chatProvider);
                         },
-                        icon: const Icon(
+                        icon: Icon(
                           Icons.send,
-                          color: Colors.white,
+                          color: Theme.of(context).colorScheme.primary,
                         ))
                   ],
                 ),
