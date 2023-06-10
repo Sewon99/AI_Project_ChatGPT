@@ -2,7 +2,7 @@ import 'package:chatgpt_course/providers/models_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import 'constants/constants.dart';
+import 'color_schemes.g.dart';
 import 'providers/chats_provider.dart';
 import 'screens/chat_screen.dart';
 
@@ -29,10 +29,19 @@ class MyApp extends StatelessWidget {
         title: 'Flutter ChatBOT',
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
-            scaffoldBackgroundColor: scaffoldBackgroundColor,
-            appBarTheme: AppBarTheme(
-              color: cardColor,
-            )),
+          useMaterial3: true,
+          colorScheme: lightColorScheme,
+          primaryColor: const Color(0xFF5E38EB),
+          cardColor: Colors.white,
+          fontFamily: 'Pretendard',
+          textTheme: const TextTheme(
+            bodyLarge: TextStyle(fontSize: 15.0, fontWeight: FontWeight.w500),
+            headlineMedium: TextStyle(
+                fontSize: 17.0,
+                fontWeight: FontWeight.w700,
+                color: Colors.black),
+          ),
+        ),
         home: const ChatScreen(),
       ),
     );
